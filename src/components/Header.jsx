@@ -5,9 +5,12 @@ import { auth } from "../utils/firebase";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
+import { toggleGPT } from "../utils/gptSlice";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const showGptSearch = useSelector((store) => store.gpt.showGPT);
   const navigate = useNavigate();
   const handleSignOut = () => {
     signOut(auth)
@@ -17,6 +20,10 @@ const Header = () => {
       .catch((error) => {
         navigate("/error");
       });
+  };
+
+  const handleGptSearch = () => {
+    dispatch(toggleGPT());
   };
 
   useEffect(() => {
@@ -45,8 +52,11 @@ const Header = () => {
         alt="Logo"
       />
       <div className="flex">
-        <button className="bg-violet-700 h-10 m-2 p-3 my-2 text-white">
-          GPT Search
+        <button
+          className="bg-violet-700 h-10 m-2 p-3 my-2 text-white"
+          onClick={handleGptSearch}
+        >
+          {showGptSearch ? "HomePage" : "GPT-Search"}
         </button>
         <img
           src="https://preview.redd.it/sgfxdosc4qo81.png?width=338&format=png&auto=webp&s=68081fe5673ff6ac567a531ae01a786ca80695f6"
