@@ -1,5 +1,5 @@
 ## The app has been deployed and hosted in firebase. 
-Please use the followinf link -> [Deployed link](https://netflixgpt-387d0.web.app/)
+## Please use the followinf link -> [Deployed link](https://netflixgpt-387d0.web.app/)
 
 
 
